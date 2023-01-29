@@ -1,0 +1,58 @@
+.movie_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 20px;
+  .card {
+    padding: 10px;
+    background: var(--card-color);
+    border-radius: var(--card-radius);
+    color: var(--text-color);
+    p {
+      margin: 10px 0;
+      text-overflow: ellipsis;
+      max-width: 155px;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 15px;
+    }
+    button {
+      padding: 0;
+    }
+  }
+}
+
+.details_container {
+  .detail_card {
+    background-color: var(--card-color);
+    color: var(--text-color);
+    box-shadow: none;
+    h5 {
+      font-size: 30px;
+      font-weight: 700;
+    }
+    .title_text {
+      padding: 0;
+      p {
+        font-weight: 600;
+      }
+    }
+    .action {
+      padding: 0;
+      margin-top: 24px;
+      button {
+        text-transform: capitalize;
+        font-weight: 700;
+        border-radius: 5px;
+        padding: 6px 18px;
+      }
+      .play {
+        background-color: var(--active-color);
+        color: #000;
+      }
+      .watch {
+        border: 1px solid var(--active-color);
+        color: var(--active-color);
+      }
+    }
+  }
+}
