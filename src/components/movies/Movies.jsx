@@ -1,31 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Box, Card, CardActions, CardContent, CardMedia, IconButton, Typography } from "@mui/material";
-import { MdPlayCircleOutline } from "react-icons/md";
-import { BsPlusCircle } from "react-icons/bs";
-import { useSelector, useDispatch } from "react-redux";
-import { filterData } from "../../features/slice/movieSlice";
+import { Box } from "@mui/material";
 import style from "./movies.module.scss";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import MovieCard from "./MovieCard";
+import data from "../../features/utils/data.json";
 const Movies = () => {
-  const dispatch = useDispatch();
-  const { loading, movies, error } = useSelector((store) => store.movie);
-  const [data, setData] = useState([]);
-  console.log(movies);
+  // const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
+  // const { movies } = useSelector((store) => store.movie);
+  // const filterItem = (singleMovie) => {
+  //   const movieData = movies.filter((data) => data === singleMovie);
+  //   setMovieDetail(movieData);
+  // };
+  // console.log(movieDetail);
   useEffect(() => {
-    setData(movies);
+    setMovies(data);
   }, []);
   return (
     <>
-      <Box className={style.movie_container}>
-        {loading ? (
-          <Typography variant="h2" sx={{ textAlign: "center" }}>
-            Loading...
-          </Typography>
-        ) : (
-          <MovieCard data={data} />
-        )}
-      </Box>
+      {/* <Box className={style.movie_container}> */}
+      <MovieCard movies={movies} />
+      {/* </Box> */}
     </>
   );
 };

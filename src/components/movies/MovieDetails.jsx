@@ -3,21 +3,26 @@ import { useParams } from "react-router-dom";
 import { Box, Button, Card, CardActions, Stack, CardContent, CardMedia, Typography } from "@mui/material";
 import style from "./movies.module.scss";
 import { useSelector } from "react-redux";
-import Movies from "./Movies";
+import MovieCard from "./MovieCard";
 const MovieDetails = () => {
   // console.log(movieData);
-  const { loading, singleMovie } = useSelector((store) => store.movie);
+  const { loading, singleMovie, movies } = useSelector((store) => store.movie);
   console.log(loading, singleMovie);
-  const [movies, setMovies] = useState([singleMovie]);
+  const [movieDetail, setMovieDetail] = useState([]);
   const { id } = useParams();
-  // useEffect(() => {
-  //   setMovies(movies);
-  // }, [movies]);
-  console.log(movies);
+  const filterItem = () => {
+    const movieData = movies.filter((data) => data === singleMovie);
+    setMovieDetail(movieData);
+  };
+  console.log(movieDetail);
+  useEffect(() => {
+    filterItem();
+  }, []);
+
   return (
     <Box className={style.details_container} mb={4}>
       <h2>{id}</h2>
-      {movies?.map((data, i) => (
+      {movieDetail?.map((data, i) => (
         <Card className={style.detail_card} key={i} sx={{ display: "flex", borderRadius: "5px" }}>
           <CardMedia component="img" alt={data.Title} height="389" image={data.Poster} sx={{ maxWidth: "330px", borderRadius: "5px 0 0 5px" }} />
           <Box p={4}>
@@ -75,7 +80,7 @@ const MovieDetails = () => {
           </Box>
         </Card>
       ))}
-      <Movies />
+      <MovieCard movies={movies} />
     </Box>
   );
 };
