@@ -1,17 +1,11 @@
-import React, { useState } from "react";
-import { Box, Stack, IconButton, Paper, TextField, InputAdornment } from "@mui/material";
-import { MdOutlineSearch, MdOutlineLightMode } from "react-icons/md";
+import React from "react";
+import { Box, Stack, IconButton } from "@mui/material";
+import { MdOutlineLightMode } from "react-icons/md";
 import { AiOutlineMenu } from "react-icons/ai";
 import { RxDotsVertical } from "react-icons/rx";
 import style from "./header.module.scss";
 import Search from "./Search";
 const Header = ({ open }) => {
-  // const [open, setOpen] = useState(false);
-  // const hello = () => {
-  //   setOpen(true);
-  //   console.log("hello steopen");
-  // };
-  // console.log(props);
   return (
     <Box className={style.header}>
       <Stack flexDirection={"row"} justifyContent={"space-between"} alignItems="center">
