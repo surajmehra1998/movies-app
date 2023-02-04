@@ -17,7 +17,7 @@ const MovieDetails = () => {
     };
     filterItem();
   }, [id, moviesList]);
-  console.log(movieDetail);
+  // console.log(movieDetail);
 
   const handleScroll = () => {
     window.screenTop({ top: 0 });

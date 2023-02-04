@@ -6,7 +6,6 @@ import { MdPlayCircleOutline } from "react-icons/md";
 import { BsPlusCircle } from "react-icons/bs";
 import { Fade } from "react-awesome-reveal";
 const MovieCard = ({ movies }) => {
-  console.log(movies);
   return (
     <Box className={style.movie_container}>
       <Fade direction="down" triggerOnce>
