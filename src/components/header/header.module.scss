@@ -1,21 +1,22 @@
-.search_form {
-  position: relative;
-  color: var(--text-color);
-  input {
-    position: relative;
-    background-color: transparent;
-    border: 0;
-    width: 200px;
-    height: 40px;
-    padding-left: 50px;
-    color: var(--text-color);
+.header {
+  padding: 20px 0;
+  margin-bottom: 10px;
+  position: sticky;
+  top: 0;
+  background: var(--light-blue);
+  z-index: 2;
+  .menu {
+    display: none;
   }
-  button {
-    position: absolute;
-    left: 0;
-    color: var(--text-color);
+  @media screen and (max-width: 767px) {
+    padding: 16px 0;
+    margin-bottom: 10px;
+    .menu {
+      display: flex;
+    }
   }
 }
+
 svg {
   color: var(--text-color);
 }

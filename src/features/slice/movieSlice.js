@@ -1,31 +1,22 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import data from "../utils/data.json";
+
+const initialState = {
+  loading: false,
+  moviesList: data,
+  searchTerm: "",
+};
 
 export const movieSlice = createSlice({
   name: "movie",
-  initialState: {
-    loading: false,
-    movies: data,
-    error: null,
-    singleMovie: [],
-  },
+  initialState: initialState,
   reducers: {
-    filterData: (state, action) => {
-      // const data= movies.filter((data)=>data===action.payload)
-      // state.singleMovie = state.singleMovie.filter((data) => data === action.payload);
-      console.log(action.payload);
-      const movieData = state.movies.filter((data) => data === action.payload);
-      // state.singleMovie = action.payload;
-      console.log(movieData);
-      // console.log(movieData);
-      // console.log(singleMovie)
-    },
-    searchFilter: (state, action) => {
-      // state.movies = state.movies.includes(action.payload.Title.toLowerCase());
-      console.log(action);
+    updateSearchTerm: (state, { payload }) => {
+      // console.log(payload);
+      state.searchTerm = payload;
     },
   },
 });
 
-export const { filterData, searchFilter } = movieSlice.actions;
+export const { updateSearchTerm } = movieSlice.actions;
 export default movieSlice.reducer;

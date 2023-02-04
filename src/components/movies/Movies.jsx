@@ -1,31 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Box, Card, CardActions, CardContent, CardMedia, IconButton, Typography } from "@mui/material";
-import { MdPlayCircleOutline } from "react-icons/md";
-import { BsPlusCircle } from "react-icons/bs";
-import { useSelector, useDispatch } from "react-redux";
-import { filterData } from "../../features/slice/movieSlice";
-import style from "./movies.module.scss";
-import { Link } from "react-router-dom";
+import React from "react";
+import { useSelector } from "react-redux";
 import MovieCard from "./MovieCard";
 const Movies = () => {
-  const dispatch = useDispatch();
-  const { loading, movies, error } = useSelector((store) => store.movie);
-  const [data, setData] = useState([]);
-  console.log(movies);
-  useEffect(() => {
-    setData(movies);
-  }, []);
+  const { moviesList, searchTerm } = useSelector((store) => store.movie);
+  // console.log("setaearch teram", searchTerm);
+  const movies = moviesList.filter((data) => data.Title.toLocaleLowerCase().includes(searchTerm));
+  // console.log("updates", movies);
+
+  if (movies.length === 0) {
+    return <h2 style={{ fontSize: "21px", fontWeight: 600, color: "#FFFFFF" }}>No results found for your search.</h2>;
+  }
   return (
     <>
-      <Box className={style.movie_container}>
-        {loading ? (
-          <Typography variant="h2" sx={{ textAlign: "center" }}>
-            Loading...
-          </Typography>
-        ) : (
-          <MovieCard data={data} />
-        )}
-      </Box>
+      <MovieCard movies={movies} />
     </>
   );
 };
