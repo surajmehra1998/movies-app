@@ -21,7 +21,7 @@ const Search = () => {
         <IconButton onClick={handleOpen}>
           <MdOutlineSearch height={23} width={23} />
         </IconButton>
-        <input type="text" value={searchTerm} placeholder="Title, Movies, Keyword" onChange={onChange} />
+        <input type="text" value={searchTerm} placeholder="Title, Movies" onChange={onChange} />
       </Stack>
       <IconButton onClick={handleClose} className="close-btn">
         <MdClose height={23} width={23} />

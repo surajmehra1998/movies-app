@@ -65,7 +65,7 @@ a.active {
     position: relative;
     background-color: transparent;
     border: 0;
-    width: auto;
+    width: 100%;
     outline: 0 !important;
     font-size: 21px;
     font-weight: 600;
@@ -100,7 +100,7 @@ a.active {
 }
 @media screen and (max-width: 767px) {
   .main-container {
-    grid-template-columns: 1fr;
+    display: block;
     .body-container {
       padding: 0 16px 16px 16px;
     }
@@ -131,6 +131,18 @@ a.active {
           display: block;
         }
       }
+    }
+  }
+  .search_form {
+    input {
+      font-size: 14px;
+    }
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+    &.open {
+      width: 200px;
     }
   }
 }
