@@ -6,26 +6,34 @@ import { useSelector } from "react-redux";
 import MovieCard from "./MovieCard";
 const MovieDetails = () => {
   // console.log(movieData);
-  const { loading, singleMovie, movies } = useSelector((store) => store.movie);
-  console.log(loading, singleMovie);
+  const { moviesList } = useSelector((store) => store.movie);
+  // const data = useSelector((store) => store.movie.movies);
+  // console.log(data);
+  // console.log(loading, singleMovie);
   const [movieDetail, setMovieDetail] = useState([]);
   const { id } = useParams();
   const filterItem = () => {
-    const movieData = movies.filter((data) => data === singleMovie);
+    const movieData = moviesList.filter((data) => data.Title === id);
     setMovieDetail(movieData);
   };
-  console.log(movieDetail);
+  // console.log(movieDetail);
+  // console.log(movieDetail);
   useEffect(() => {
     filterItem();
-  }, []);
+  }, [id]);
 
   return (
     <Box className={style.details_container} mb={4}>
-      <h2>{id}</h2>
       {movieDetail?.map((data, i) => (
-        <Card className={style.detail_card} key={i} sx={{ display: "flex", borderRadius: "5px" }}>
-          <CardMedia component="img" alt={data.Title} height="389" image={data.Poster} sx={{ maxWidth: "330px", borderRadius: "5px 0 0 5px" }} />
-          <Box p={4}>
+        <Card className={style.detail_card} key={i} sx={{ display: "flex", borderRadius: "5px", marginBottom: 4 }}>
+          <CardMedia
+            component="img"
+            alt={data.Title}
+            height="389"
+            image={data.Poster}
+            sx={{ maxWidth: { md: 330 }, objectFit: { xs: "inherit", md: "cover" }, borderRadius: "5px 0 0 5px" }}
+          />
+          <Box p={{ xs: "16px", md: 4 }}>
             <CardContent sx={{ padding: 0 }}>
               <Box maxWidth={300} className={style.title_text}>
                 <Typography gutterBottom variant="h5">
@@ -80,7 +88,7 @@ const MovieDetails = () => {
           </Box>
         </Card>
       ))}
-      <MovieCard movies={movies} />
+      <MovieCard movies={moviesList} />
     </Box>
   );
 };

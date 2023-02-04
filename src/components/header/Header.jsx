@@ -1,23 +1,32 @@
 import React, { useState } from "react";
 import { Box, Stack, IconButton, Paper, TextField, InputAdornment } from "@mui/material";
-import { MdOutlineSearch } from "react-icons/md";
+import { MdOutlineSearch, MdOutlineLightMode } from "react-icons/md";
+import { AiOutlineMenu } from "react-icons/ai";
 import { RxDotsVertical } from "react-icons/rx";
-
+import style from "./header.module.scss";
 import Search from "./Search";
-const Header = () => {
-  // console.log(search);
+const Header = ({ open }) => {
+  // const [open, setOpen] = useState(false);
+  // const hello = () => {
+  //   setOpen(true);
+  //   console.log("hello steopen");
+  // };
+  // console.log(props);
   return (
-    <Box py={4} mb={4} sx={{ position: "sticky", top: 0, background: "#273244", zIndex: 2 }}>
+    <Box className={style.header}>
       <Stack flexDirection={"row"} justifyContent={"space-between"} alignItems="center">
         <Search />
-        <Paper sx={{ background: "transparent", boxShadow: "none", color: "#d4d7dd" }}>
+        <Stack flexDirection={"row"} justifyContent={"space-between"} alignItems="center">
           <IconButton>
-            <MdOutlineSearch height={23} width={23} />
+            <MdOutlineLightMode height={23} width={23} />
           </IconButton>
           <IconButton>
             <RxDotsVertical height={23} width={23} />
           </IconButton>
-        </Paper>
+          <IconButton onClick={open} className={style.menu}>
+            <AiOutlineMenu height={23} width={23} />
+          </IconButton>
+        </Stack>
       </Stack>
     </Box>
   );

@@ -42,3 +42,48 @@ a.active {
     color: var(--active-color);
   }
 }
+.main-container {
+  min-height: 100vh;
+  background: var(--light-blue);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  .body-container {
+    padding: 0 32px 32px 32px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .main-container {
+    grid-template-columns: 1fr;
+    .body-container {
+      padding: 0 16px 16px 16px;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 240px;
+      transition: var(--transition);
+      z-index: 222;
+      display: none;
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        transition: var(--transition);
+        z-index: 222;
+        opacity: 0;
+        display: none;
+      }
+      &.active {
+        display: block;
+        .nav-container {
+          position: relative;
+          z-index: 9999;
+        }
+        .overlay {
+          opacity: 1;
+          display: block;
+        }
+      }
+    }
+  }
+}
